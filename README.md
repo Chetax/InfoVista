@@ -1,5 +1,5 @@
 # InfoVista
-![InfoVista Logo](src/Component/LeftNav/infovista-high-resolution-logo-black-transparent.png)
+![InfoVista Logo](./AppLogo.png)
 
 
 InfoVista is a new web application designed to provide users with comprehensive access to information, news, and insights from around the world. With InfoVista, users can stay informed, explore diverse perspectives, and discover trending topics with ease.
