@@ -29,7 +29,7 @@ function Singin() {
                         <Button onClick={async () => {  try{ const value= await firebase.singinuser(email,password,firebase.setUserValue);Setemail("");Setpassword("");if(value===true)navigate('/Home');else navigate('/signin');}catch(error){alert(error);}}} variant="contained" sx={{ textAlign: "center", width: "30%" }}>Sign In</Button>
 
                         <Box sx={{ textAlign: "center",display:"flex",justifyContent:'start' ,alignItems:'center' }}>
-                            <Typography>Don't have an account ? </Typography><Link to="/singup"> <Button>Register Now</Button></Link>
+                            <Typography>Don't have an account ? </Typography><Link to="/signup"> <Button>Register Now</Button></Link>
                         </Box>
                         {/* pass: Chetan12 , mail:testz@gmail.com*/}
                   

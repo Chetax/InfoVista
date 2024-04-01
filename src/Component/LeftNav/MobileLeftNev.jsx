@@ -39,7 +39,6 @@ export default function TemporaryDrawer() {
           <ListItem className='parent' key={item.text} disablePadding>
               <NavLink to={  item.text==='Close' ? '/Home':  `/${item.text}`} style={{textDecoration:'none',}}>
             <ListItemButton style={{textDecoration:'none',}}>
-          
               <ListItemIcon>
                 {item.icon}
               </ListItemIcon>
@@ -56,14 +55,18 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         {['Logout'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+          <ListItem key={text} disablePadding >
+      
+    <ListItemButton>
+        <ListItemIcon>
+            <LogoutIcon />
+        </ListItemIcon>
+
+            <NavLink  to='/signin'style={{color:'black',textDecoration:'none  '}}  >  <ListItemText  primary={text} />    </NavLink>
+    </ListItemButton>
+ 
+</ListItem>
+
         ))}
       </List>
     </Box>

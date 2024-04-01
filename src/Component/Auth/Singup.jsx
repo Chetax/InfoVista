@@ -40,7 +40,7 @@ function Singup() {
                            }}} variant="contained" sx={{ textAlign: "center", width: "30%" }}>Register</Button>
 
                         <Box sx={{ textAlign: "center",display:"flex",justifyContent:'start' ,alignItems:'center' }}>
-                            <Typography>Already have an account ? </Typography><Link to="/singin"> <Button>Sign In</Button></Link>
+                            <Typography>Already have an account ? </Typography><Link to="/signin"> <Button>Sign In</Button></Link>
                         </Box>
                         
                   
