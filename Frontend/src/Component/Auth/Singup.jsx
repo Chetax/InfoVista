@@ -1,7 +1,7 @@
 
 import {useFirebase} from  '../../Context/FirebaseContext';
 import { Container, Box, Grid, Typography, TextField, Button } from "@mui/material";
-import singin from './singupbg1 (1).png';
+import singin from './Images/singupbg1 (1).png';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
@@ -23,15 +23,15 @@ function Singup() {
                     <Grid item xs={12} sm={12} md={6} sx={{ display: 'flex', justifyContent: "center", flexDirection: 'column' }}>
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pl: 2, mb: 7, '@media(max-width:940px) and (min-width:880px)': { pl: 5 } }}>
                             <Typography fontSize={"20px"}>Name</Typography>
-                            <TextField id="outlined-basic" placeholder="Enter Your name "  value={name} onChange={(e)=>Setname(e.target.value)} sx={{ width: '70%' }} type="text" label="Name" variant="outlined" />
+                            <TextField id="" placeholder="Enter Your name "  value={name} onChange={(e)=>Setname(e.target.value)} sx={{ width: '70%' }} type="text" label="Name" variant="outlined" />
                         </Box>
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pl: 2, mb: 7, '@media(max-width:940px) and (min-width:880px)': { pl: 5 } }}>
                             <Typography fontSize={"20px"}>Email</Typography>
-                            <TextField id="outlined-basic" placeholder="Enter Your Email "  value={email} onChange={(e)=>Setemail(e.target.value)} sx={{ width: '70%' }} type="email" label="Email" variant="outlined" />
+                            <TextField id="" placeholder="Enter Your Email "  value={email} onChange={(e)=>Setemail(e.target.value)} sx={{ width: '70%' }} type="email" label="Email" variant="outlined" />
                         </Box>
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pl: 2, mb: 7, '@media(max-width:940px) and (min-width:880px)': { pl: 5 } }}>
                             <Typography fontSize={"20px"}   sx={{}}>Password</Typography>
-                            <TextField id="outlined-basic" value={password} onChange={(e)=>Setpassword(e.target.value)} placeholder="Enter Your Password " sx={{ width: '70%' }} type="password" label="Password" variant="outlined" />
+                            <TextField id="" value={password} onChange={(e)=>Setpassword(e.target.value)} placeholder="Enter Your Password " sx={{ width: '70%' }} type="password" label="Password" variant="outlined" />
                         </Box>
                         <Button onClick={async () => { try{
                          const value= await firebase.signupUser(name,email, password,firebase.setUserValue);Setemail("");Setpassword("");Setname("");if(value)navigate('/Home');

@@ -1,6 +1,6 @@
 import { Container, Box, Grid, Typography, TextField, Button } from "@mui/material";
 import { useFirebase } from "../../Context/FirebaseContext";
-import singup from './singup.png';
+import singup from './Images/singup.png';
 import './Singin.css';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ function Singin() {
                         </Box>
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pl: 2, mb: 7, '@media(max-width:940px) and (min-width:880px)': { pl: 5 } }}>
                             <Typography fontSize={"20px"}   sx={{}}>Password</Typography>
-                            <TextField id="outlined-basic" value={password} onChange={(e)=>Setpassword(e.target.value)} placeholder="Enter Your Password " sx={{ width: '70%' }} type="password" label="Password" variant="outlined" />
+                            <TextField id="outlined" value={password} onChange={(e)=>Setpassword(e.target.value)} placeholder="Enter Your Password " sx={{ width: '70%' }} type="password" label="Password" variant="outlined" />
                         </Box>
                         <Button onClick={async () => {  try{ const value= await firebase.singinuser(email,password,firebase.setUserValue);Setemail("");Setpassword("");if(value===true)navigate('/Home');else navigate('/signin');}catch(error){alert(error);}}} variant="contained" sx={{ textAlign: "center", width: "30%" }}>Sign In</Button>
 

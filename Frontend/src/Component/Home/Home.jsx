@@ -10,13 +10,10 @@ import Subscription from '../Subscription/Subscription';
 import SimpleHome from './SimpleHome';
 
 function Home() {
-
-  
     const NavElement = ["Explore", "Subscriptions", "Settings"];
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    let location = useLocation();
-    location=location.pathname;
-
+    let location = useLocation().pathname; // Get the full pathname
+    
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -30,16 +27,16 @@ function Home() {
 
     return (
         <>
+            <h1>Hello</h1>
             <Grid container spacing={'none'} >
                 <Grid item xs={2}>{windowWidth > 700 ? <LeftNav /> : <MobileLeftNav />}</Grid>
                 <Grid item xs={10}>
-                {
-        location ==='/Home' ? <SimpleHome></SimpleHome> :
-        location ==='/Explore' ?<Explore/> : 
-        location ==='/Subscription'?<Subscription/>:
-        location ==='/Setting' ? <Setting/> :  
-        <Notfound/> 
-      }
+                    {location === '/Home' ? <SimpleHome /> :
+                        location === '/Explore' ? <Explore /> :
+                            location === '/Subscription' ? <Subscription /> :
+                                location === '/Setting' ? <Setting /> :
+                                    <Notfound />
+                    }
                 </Grid>
             </Grid>
         </>
@@ -47,3 +44,4 @@ function Home() {
 }
 
 export default Home;
+

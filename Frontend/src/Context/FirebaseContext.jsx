@@ -29,6 +29,7 @@ const signupUser = (name, email, password, setUserValue) => {
         .then(() => {
             alert("Successful login");
             setUserValue(true);
+            localStorage.setItem("Cookie",true);
             return true;
         })
         .catch((error) => {
@@ -45,6 +46,7 @@ const singinuser = (email, password, setUserValue) => {
         .then(() => {
             alert("Successful login");
             setUserValue(true);
+            localStorage.setItem("Cookie",true);
             return true;
         })
         .catch((error) => {
