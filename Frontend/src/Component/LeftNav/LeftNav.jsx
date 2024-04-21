@@ -4,11 +4,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import Explore from '../Explore/Explore';
-import SimpleHome from '../Home/SimpleHome';
-import Notfound from '../NotFound/NotFound';
-import Setting from '../Setting/Setting';
-import Subscription from '../Subscription/Subscription';
+
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore'; 
 import BookmarkIcon from '@mui/icons-material/Bookmark'; 
@@ -33,7 +29,6 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);

@@ -15,6 +15,9 @@ const database = mongose.connection;
 database.on('error', (error) => {
     console.log(error)
 })
+const Newroutes=require('./Routes/news');
+app.use('/news',Newroutes)
+
 database.once('connected', () => {
     console.log('Database Connected');
 })
