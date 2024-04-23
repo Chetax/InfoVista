@@ -17,8 +17,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 export default function AnchorTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -68,11 +66,11 @@ export default function AnchorTemporaryDrawer() {
     </Box>
   );
 
-  const anchor = 'right'; // Specify the anchor direction
+  const anchor = 'right'; 
 
   return (
     <div>
-      <Button onClick={toggleDrawer(anchor, true)}>
+      <Button sx={{position:"absolute",left:"90%"}} onClick={toggleDrawer(anchor, true)}>
       <ReorderIcon fontSize='large' sx={{color:"black"}}/>
       </Button>
       <Drawer
