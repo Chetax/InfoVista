@@ -5,12 +5,19 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({
-    origin:['http://localhost:4000'],
-    methods:["POST","GET"],
-    credentials:true
-}
-)); // Enable CORS middleware
+
+app.use(
+    cors({
+      origin: "*",
+    })
+  );
+  app.use(cors(
+    {
+      origin:["http://localhost:4000"],
+      method:['POST','GET'],
+      credentials:true,
+    }
+  ))
 app.use(express.json());
 
 const mongostring = process.env.DATABASE_URL;
