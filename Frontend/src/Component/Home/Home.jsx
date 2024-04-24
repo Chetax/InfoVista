@@ -20,21 +20,22 @@ function Home() {
         SetQuery("")
     )
     useEffect(() => {
-        // const fetchData = async () => {
-        //     try {
-        //         const response = await fetch(process.env.REACT_APP_newApi);
-        //         if (!response.ok) {
-        //             throw new Error('Failed to fetch data');
-        //         }
-        //         const data = await response.json();
-        //         setdata(data); // Set the fetched data into state
-        //     } catch (error) {
-        //         console.error("Error fetching data:", error);
-        //     }
-        // };
+        const fetchData = async () => {
+            try {
+                const response = await fetch(process.env.REACT_APP_newApi);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const jsonData = await response.json();
+                setdata(jsonData.articles); // Set only the articles array to state
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        
         
     
-        // fetchData(); // Call the async function
+        fetchData(); 
     
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -64,7 +65,6 @@ urlToImage:"https://media.wired.com/photos/66172445418c784409dd692a/191:100/w_12
                 <Grid item xs={windowWidth > 1000 ? 2 : 1 }>{windowWidth > 1000 ? <LeftNav /> : <MobileLeftNav />}</Grid>
                 <Grid item xs={windowWidth > 1000 ? 8 : 10 } sx={{pl:5,pr:5,'@media(max-width:948)':{pl:2,pr:2}}} >
              <Box >
-            {/* Search Bar */}
             <Container sx={{ display: 'flex', justifyContent: 'flex-end', pb:1,pt:1,mr:4}}>
       <Box sx={{ border: "2px solid grey", width: '50%', display: "flex", alignItems: 'center', borderRadius: '5px' }}>
         <InputBase
@@ -79,7 +79,14 @@ urlToImage:"https://media.wired.com/photos/66172445418c784409dd692a/191:100/w_12
         </IconButton>
       </Box>
     </Container>
-                <NewsCard news={obj}/>
+    {data &&
+    data
+        .filter(article => article.title !== "[Removed]" && article.description !== "-")
+        .map(article => (
+            article.url && article.title && article.urlToImage && <NewsCard key={article.title} news={article} />
+        ))
+}
+
             </Box>
                 </Grid>
                 <Grid item xs={1}>{windowWidth > 1000 ? <RightSideBar /> : <RightMobile />}</Grid>
