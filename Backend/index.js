@@ -13,7 +13,7 @@ app.use(
   );
   app.use(cors(
     {
-      origin:["http://localhost:4000"],
+      origin:[""],
       method:['POST','GET'],
       credentials:true,
     }
