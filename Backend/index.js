@@ -6,13 +6,13 @@ require('dotenv').config();
 
 const app = express();
 
-  app.use(cors(
-    {
-      origin:[""],
-      method:['POST','GET'],
-      credentials:true,
-    }
-  ))
+// Enable CORS for all routes with specific origin and methods
+app.use(cors({
+  origin: '*', // Replace '*' with the specific origin of your frontend application
+  methods: ['POST', 'GET'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 const mongostring = process.env.DATABASE_URL;
