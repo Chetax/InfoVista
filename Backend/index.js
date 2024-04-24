@@ -27,7 +27,7 @@ database.once('connected', () => {
     console.log('Database Connected');
 });
 
-app.get('getname',(req,res)=>{
+app.get('/getname',(req,res)=>{
     res.send("Hello");
 })
 app.use('/news', routes);
