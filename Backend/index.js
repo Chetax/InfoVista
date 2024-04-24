@@ -27,6 +27,9 @@ database.once('connected', () => {
     console.log('Database Connected');
 });
 
+app.use('getname',(req,res)=>{
+    res.send("Hello");
+})
 app.use('/news', routes);
 
 app.listen(process.env.PORT || 4000, () => {
