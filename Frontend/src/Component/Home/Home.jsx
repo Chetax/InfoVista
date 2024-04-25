@@ -16,7 +16,7 @@ function Home() {
     const NavElement = ["Explore", "Subscriptions", "Settings"];
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [Query, SetQuery] = useState("");
-    const [data, setData] = useState("");
+    const [data, setData] = useState([]);
     let location = useLocation().pathname;
     const handleSeach = () => (
         SetQuery("")
@@ -24,12 +24,15 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://info-vista.vercel.app/news/getevrything');
-                setData(response.data);
+                const response = await axios.get('http://localhost:4000/news/getevrything');
+                const responseData = response.data;
+                setData(responseData);
+                console.log("data -> ", responseData); // Log responseData
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
+        
 
         fetchData();
 
@@ -77,12 +80,13 @@ function Home() {
                             </Box>
                         </Container>
                         {data &&
-                            data
-                                .filter(article => article.title !== "[Removed]" && article.description !== "-")
-                                .map(article => (
-                                    article.url && article.title && article.urlToImage && <NewsCard key={article.title} news={article} />
-                                ))
-                        }
+    data
+        .filter(article => article.title !== "[Removed]" && article.description !== "-")
+        .map(article => (
+            article.url && article.title && article.image && <NewsCard key={article.title} news={article} />
+        ))
+}
+
 
                     </Box>
                 </Grid>

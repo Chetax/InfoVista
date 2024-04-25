@@ -19,12 +19,11 @@ function NewsCard(newsobj) {
                      <Typography variant="h5" sx={{fontWeight:"bold", color:'black',fontFamily:"Georgia",'&:hover':{color:"grey",cursor:'pointer'}}}>{newsobj.news.title}</Typography>
                      </a>
                         <Typography variant="subtitle1" sx={{fontFamily:"Garamond",fontSize:"20px",mt:1,lineHeight:"20px"}}>{newsobj.news.description}</Typography>
-                        <Typography variant="subtitle1" sx={{fontFamily:"cursive",fontSize:"15px",mt:2}}>- {newsobj.news.author}</Typography>
-                        </Grid>
+                            </Grid>
                     <Grid xs={1}></Grid>
                     <Grid item xs={5} > 
 
-                    <img style={{ height: "235px",width:"100%", borderRadius: "5px"}} src={newsobj.news.urlToImage} alt="" /> 
+                    <img style={{ height: "235px",width:"100%", borderRadius: "5px"}} src={newsobj.news.image} alt="" /> 
           <Box sx={{display:"flex"}}><a href={newsobj.news.url} style={{textDecoration:'none'}} target="blank"> <Typography sx={{color:"skyblue",mr:2}}>{newsobj.news.source.name}</Typography></a> <Typography sx={{color:'grey'}}>• Published {formattedDate}</Typography></Box>
                       </Grid>
                 </Grid>
