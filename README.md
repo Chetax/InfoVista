@@ -33,7 +33,7 @@ We welcome contributions from the community! If you'd like to contribute to Info
 4. Push to the branch: `git push origin feature/new-feature`
 5. Submit a pull request
 
-## Projects Built with NewsCatcher
+## Projects Built with [NewsCatcher](https://www.newscatcherapi.com/)
 1. **[Their News](https://www.their.news/)** by [Philipp Hadjimina](https://github.com/Hadjimina)
    - The Goal of this project is to build a website where you can find news that challenge your existing biases and believes in order for everyone to break out of their news bubble and in the end to foster understanding of opposing political views. You can better understand people with a different opinion if you are informed about their.news (badum tsss 🥁)
 
