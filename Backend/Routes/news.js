@@ -1,7 +1,9 @@
-const express=require('express');
-const routes=express.Router();
-const GetByKeyword=require('../Controller/ByKeyword');
-const FetchAllNews=require('../Controller/FetchNews');
-routes.get("/getByKeyword",GetByKeyword);
-routes.get("/getevrything",FetchAllNews);
-module.exports=routes;
+// news.js - Route
+
+const express = require('express');
+const router = express.Router();
+const fetchNews = require('../Controller/FetchNews');
+
+router.get('/geteverything', fetchNews);
+
+module.exports = router;

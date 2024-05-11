@@ -1,6 +1,8 @@
+// index.js - Main file
+
 const express = require('express');
 const cors = require('cors');
-const routes = require('./Routes/news');
+const newsRoutes = require('./Routes/news');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -30,7 +32,8 @@ database.once('connected', () => {
 app.get('/getname',(req,res)=>{
     res.send("Hello");
 })
-app.use('/news', routes);
+
+app.use('/news', newsRoutes); // Use the news routes
 
 app.listen(process.env.PORT || 4000, () => {
     console.log(`Server Started At Port ${process.env.PORT}`);

@@ -15,16 +15,16 @@ function NewsCard(newsobj) {
                 <hr />
                 <Grid container sx={{pt:2,pb:2}}>
                     <Grid item xs={6} sx={{pl:2,pt:2,}}>
-                    <a href={newsobj.news.url} style={{textDecoration:'none'}} target="blank"> 
+                    <a href={newsobj.news.link} style={{textDecoration:'none'}} target="blank"> 
                      <Typography variant="h5" sx={{fontWeight:"bold", color:'black',fontFamily:"Georgia",'&:hover':{color:"grey",cursor:'pointer'}}}>{newsobj.news.title}</Typography>
                      </a>
-                        <Typography variant="subtitle1" sx={{fontFamily:"Garamond",fontSize:"20px",mt:1,lineHeight:"20px"}}>{newsobj.news.description}</Typography>
+                        <Typography variant="subtitle1" sx={{fontFamily:"Garamond",fontSize:"20px",mt:1,lineHeight:"20px"}}>{newsobj.news.excerpt}</Typography>
                             </Grid>
                     <Grid xs={1}></Grid>
                     <Grid item xs={5} > 
 
-                    <img style={{ height: "235px",width:"100%", borderRadius: "5px"}} src={newsobj.news.image} alt="" /> 
-          <Box sx={{display:"flex"}}><a href={newsobj.news.url} style={{textDecoration:'none'}} target="blank"> <Typography sx={{color:"skyblue",mr:2}}>{newsobj.news.source.name}</Typography></a> <Typography sx={{color:'grey'}}>• Published {formattedDate}</Typography></Box>
+                    <img style={{ height: "235px",width:"100%", borderRadius: "5px"}} src={newsobj.news.media} alt="" /> 
+          <Box sx={{display:"flex"}}><a href={newsobj.news.link} style={{textDecoration:'none'}} target="blank"> <Typography sx={{color:"skyblue",mr:2}}>{newsobj.news.author}</Typography></a> <Typography sx={{color:'grey'}}>• Published {formattedDate}</Typography></Box>
                       </Grid>
                 </Grid>
                 <hr />

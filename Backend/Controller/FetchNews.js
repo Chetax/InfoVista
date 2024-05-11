@@ -1,17 +1,25 @@
-const axios = require('axios');
-require('dotenv').config();
+const axios = require("axios").default;
 
-const FetchAllNews = async (req, res) => {
+async function fetchNews(req, res) {
     try {
-        console.log("Received request for fetching news data");
-        const response = await axios.get(process.env.ALLNEwSAPI);
-        console.log(response);
-        res.json(response.data.articles);
-    } catch (err) {
-        console.error("Error fetching data:", err);
+        // Extract the keyword from the query parameters
+        const keyword = req.query.keyword || 'Bitcoin'; // Default to 'Bitcoin' if no keyword is provided
+
+        const options = {
+            method: 'GET',
+            url: 'https://api.newscatcherapi.com/v2/search',
+            params: {q: keyword, lang: 'en', sort_by: 'relevancy', page: '1'},
+            headers: {
+                'x-api-key': process.env.your_key_1
+            }
+        };
+
+        const response = await axios.request(options);
+        res.json(response.data);
+    } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
 
-
-module.exports = FetchAllNews;
+module.exports = fetchNews; // Make sure to export the fetchNews function
