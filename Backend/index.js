@@ -1,7 +1,7 @@
 // index.js - Main file
 
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // Import cors middleware
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -9,7 +9,7 @@ const app = express();
 
 // Enable CORS for all routes with specific origin and methods
 app.use(cors({
-  origin: '*', // Replace '*' with the specific origin of your frontend application
+  origin: '../', // Replace '*' with the specific origin of your frontend application
   methods: ['POST', 'GET'],
   credentials: true,
 }));
