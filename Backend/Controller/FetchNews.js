@@ -1,3 +1,5 @@
+// fetchNews.js - News fetching function
+
 const axios = require("axios").default;
 
 async function fetchNews(req, res) {
@@ -8,7 +10,7 @@ async function fetchNews(req, res) {
         const options = {
             method: 'GET',
             url: 'https://api.newscatcherapi.com/v2/search',
-            params: {q: keyword, lang: 'en', sort_by: 'relevancy', page: '1'},
+            params: { q: keyword, lang: 'en', sort_by: 'relevancy', page: '1' },
             headers: {
                 'x-api-key': process.env.your_key_1
             }
@@ -22,4 +24,4 @@ async function fetchNews(req, res) {
     }
 }
 
-module.exports = fetchNews; // Make sure to export the fetchNews function
+module.exports = fetchNews; // Export the fetchNews function

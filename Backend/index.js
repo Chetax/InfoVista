@@ -2,7 +2,6 @@
 
 const express = require('express');
 const cors = require('cors');
-const newsRoutes = require('./Routes/news');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -18,21 +17,23 @@ app.use(cors({
 app.use(express.json());
 
 const mongostring = process.env.DATABASE_URL;
-mongoose.connect(mongostring);
+mongoose.connect(mongostring, { useNewUrlParser: true, useUnifiedTopology: true }); // Add options for MongoDB connection
 const database = mongoose.connection;
 
 database.on('error', (error) => {
-    console.log(error);
+    console.error(error);
 });
 
-database.once('connected', () => {
+database.once('open', () => { // Change 'connected' event to 'open'
     console.log('Database Connected');
 });
 
-app.get('/getname',(req,res)=>{
+app.get('/getname', (req, res) => {
     res.send("Hello");
-})
+});
 
+// Integration of newsRoutes module
+const newsRoutes = require('./Routes/news'); // Assuming you have a 'news.js' file in a 'Routes' directory
 app.use('/news', newsRoutes); // Use the news routes
 
 app.listen(process.env.PORT || 4000, () => {
