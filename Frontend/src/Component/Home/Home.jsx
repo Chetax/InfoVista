@@ -23,7 +23,7 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://info-vista-aroe6u4d4-padhenchetangmailcoms-projects.vercel.app/news/geteverything');
+                const response = await axios.get('https://info-vista.vercel.app/news/geteverything');
                 const responseData = response.data.articles;
                 setData(responseData);
                 console.log("data -> ", responseData); // Log responseData
