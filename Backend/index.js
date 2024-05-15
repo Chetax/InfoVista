@@ -9,7 +9,7 @@ const app = express();
 
 // Enable CORS for all routes with specific origin and methods
 app.use(cors({
-  origin: '', // Replace '*' with the specific origin of your frontend application
+  origin: 'https://info-vista-deou.vercel.app', // Replace '*' with the specific origin of your frontend application
   methods: ['POST', 'GET'],
   credentials: true,
 }));
