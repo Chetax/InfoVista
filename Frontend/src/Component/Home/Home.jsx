@@ -23,35 +23,27 @@
         useEffect(() => {
             const fetchData = async () => {
                 try {
-                    const response = await axios.get('https://info-vista.vercel.app/news/geteverything');
-                    if (response && response.data && response.data.articles) {
-                        const responseData = response.data.articles;
-                        setData(responseData);
-                        console.log("data -> ", responseData);
-                    } else {
-                        console.error("Unexpected response structure:", response);
-                        setData([]); // Set an empty array as a fallback
-                    }
+                    const response = await axios.get('/news/geteverything');
+                    const responseData = response.data.articles;
+                    setData(responseData);
+                    console.log("data -> ", responseData); // Log responseData
                 } catch (error) {
                     console.error("Error fetching data:", error);
-                    setData([]); // Set an empty array as a fallback
                 }
             };
-            
-        
+
             fetchData();
-        
+
             const handleResize = () => {
                 setWindowWidth(window.innerWidth);
             };
-        
+
             window.addEventListener('resize', handleResize);
-        
+
             return () => {
                 window.removeEventListener('resize', handleResize);
             };
         }, []);
-        
 
         return (
             <>
