@@ -14,6 +14,9 @@ app.use(cors());
 //   methods: ['POST', 'GET'],
 //   credentials: true,
 // }));
+app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
+
+
 
 app.use(express.json());
 
@@ -37,6 +40,10 @@ app.get('/getname', (req, res) => {
 const newsRoutes = require('./Routes/news'); // Assuming you have a 'news.js' file in a 'Routes' directory
 app.use('/news', newsRoutes); // Use the news routes
 
+app.get("/*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+ })
+ 
 app.listen(process.env.PORT || 4000, () => {
     console.log(`Server Started At Port ${process.env.PORT}`);
 });
