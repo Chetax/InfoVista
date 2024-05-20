@@ -24,9 +24,10 @@
             const fetchData = async () => {
                 try {
                     const response = await axios.get('/news/geteverything');
+                    console.log("data -> ", response);
                     const responseData = response.data.articles;
                     setData(responseData);
-                    console.log("data -> ", responseData); // Log responseData
+                     // Log responseData
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 }
