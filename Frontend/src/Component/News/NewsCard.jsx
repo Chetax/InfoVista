@@ -7,7 +7,7 @@ function NewsCard(newsobj) {
     const month = publishedAtDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month (0-11)
     const day = publishedAtDate.getDate();
     const formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
-    console.log("New obje -> ",newsobj);
+  
     
     return (
         <>
