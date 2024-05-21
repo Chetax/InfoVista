@@ -10,7 +10,13 @@ InfoVista is a new web application designed to provide users with comprehensive 
 - **Intuitive Interface**: Navigate seamlessly through the application with our user-friendly interface.
 - **Personalized Experience**: Customize your content preferences for a tailored browsing experience.
 - **Responsive Design**: Enjoy InfoVista on any device with our responsive design.
-
+## Techstack :- 
+    -React.js 
+    -Node.js & Express.js
+    -MongoDB
+    -Firebase Auth
+    -NewsCather API
+    -REST API
 ## Getting Started
 
 To get started with InfoVista, follow these steps:
