@@ -58,6 +58,6 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Contact
 
-If you have any questions or feedback, please feel free to contact us at [info@infovista.com](mailto:padhenchetan@gmail.com).
+If you have any questions or feedback, please feel free to contact us at [padhenchetan@gmail.com](mailto:padhenchetan@gmail.com).
 
 
