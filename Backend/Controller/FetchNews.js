@@ -13,7 +13,7 @@ async function fetchNews(req, res) {
             params: { q: keyword, lang: 'en', sort_by: 'relevancy', page: '1' },
             headers: {
                 'x-api-key': process.env.your_key_1,
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             }
         };
 
