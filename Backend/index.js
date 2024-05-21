@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
 
 
-
+JSON.parse()
 app.use(express.json());
 
 const mongostring = process.env.DATABASE_URL;
