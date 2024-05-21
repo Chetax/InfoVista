@@ -12,8 +12,7 @@ async function fetchNews(req, res) {
             url: 'https://api.newscatcherapi.com/v2/search',
             params: { q: keyword, lang: 'en', sort_by: 'relevancy', page: '1' },
             headers: {
-                'x-api-key': process.env.your_key_1,
-                'content-type': 'application/json',
+                'x-api-key': process.env.your_key_1
             }
         };
 
