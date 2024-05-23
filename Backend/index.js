@@ -1,9 +1,9 @@
 // index.js - Main file
 
 const express = require('express');
-const cors = require('cors'); // Import cors middleware
+const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path'); // Import path module
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -25,14 +25,14 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 const mongostring = process.env.DATABASE_URL;
-mongoose.connect(mongostring, { useNewUrlParser: true, useUnifiedTopology: true }); // Add options for MongoDB connection
+mongoose.connect(mongostring, { useNewUrlParser: true, useUnifiedTopology: true });
 const database = mongoose.connection;
 
 database.on('error', (error) => {
     console.error(error);
 });
 
-database.once('open', () => { // Change 'connected' event to 'open'
+database.once('open', () => {
     console.log('Database Connected');
 });
 
@@ -41,14 +41,15 @@ app.get('/api/getname', (req, res) => {
 });
 
 // Integration of newsRoutes module
-const newsRoutes = require('./Routes/news'); // Assuming you have a 'news.js' file in a 'Routes' directory
-app.use('/api/news', newsRoutes); // Use the news routes under /api prefix
+const newsRoutes = require('./Routes/news');
+app.use('/api/news', newsRoutes);
 
 // Serve the index.html file for any other requests
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-app.listen(process.env.PORT || 4000, () => {
-    console.log(`Server Started At Port ${process.env.PORT || 4000}`);
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`Server Started At Port ${port}`);
 });
