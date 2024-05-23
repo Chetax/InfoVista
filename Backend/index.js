@@ -3,20 +3,24 @@
 const express = require('express');
 const cors = require('cors'); // Import cors middleware
 const mongoose = require('mongoose');
+const path = require('path'); // Import path module
 require('dotenv').config();
 
 const app = express();
 
-// Enable CORS for all routes with specific origin and methods
+// Enable CORS for all routes
 app.use(cors());
-// app.use(cors({
-//   origin: ' http://localhost:3000',
-//   methods: ['POST', 'GET'],
-//   credentials: true,
-// }));
-app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
 
+// Serve static files from the 'client/build' directory
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
+// Middleware to set Content-Type header for JSON responses
+app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) {
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    }
+    next();
+});
 
 app.use(express.json());
 
@@ -32,18 +36,19 @@ database.once('open', () => { // Change 'connected' event to 'open'
     console.log('Database Connected');
 });
 
-app.get('/getname', (req, res) => {
+app.get('/api/getname', (req, res) => {
     res.send("Hello");
 });
 
 // Integration of newsRoutes module
 const newsRoutes = require('./Routes/news'); // Assuming you have a 'news.js' file in a 'Routes' directory
-app.use('/news', newsRoutes); // Use the news routes
+app.use('/api/news', newsRoutes); // Use the news routes under /api prefix
 
-app.get("/*", function (req, res) {
+// Serve the index.html file for any other requests
+app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
- })
- 
+});
+
 app.listen(process.env.PORT || 4000, () => {
-    console.log(`Server Started At Port ${process.env.PORT}`);
+    console.log(`Server Started At Port ${process.env.PORT || 4000}`);
 });
