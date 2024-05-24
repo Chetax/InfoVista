@@ -1,4 +1,4 @@
-# InfoVista
+#  [InfoVista](https://info-vista-frontend.vercel.app/)
 ![InfoVista Logo](AppLogo.png)
 
 
