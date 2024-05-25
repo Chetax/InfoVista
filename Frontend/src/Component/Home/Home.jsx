@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setKeyword } from '../../Redux/Keyword';
 
 function Home() {
-    const keyword = useSelector(state => state.keyword.keyword);
+    let keyword = useSelector(state => state.keyword.keyword);
   const dispatch = useDispatch()
   console.log({keyword});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -24,6 +24,7 @@ function Home() {
     const [loading, setLoading] = useState(true);
    const handleSearch=()=>{
     dispatch(setKeyword(Query));
+    keyword=Query;
     fetchData();
    }
 
@@ -43,7 +44,6 @@ function Home() {
 
     const fetchData = async () => {
         setLoading(true); // Set loading to true at the start of fetching
-    
         try {
             if (!keyword) return; // Exit early if no keyword is provided
     
