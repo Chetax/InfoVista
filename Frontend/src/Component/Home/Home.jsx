@@ -10,15 +10,21 @@ import NewsCard from '../News/NewsCard';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase } from '@mui/material';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { setKeyword } from '../../Redux/Keyword';
 
 function Home() {
+    const keyword = useSelector(state => state.keyword.keyword);
+  const dispatch = useDispatch()
+  console.log({keyword});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [Query, SetQuery] = useState("");
     const [data, setData] = useState([]);
     
-    const handleSeach = () => {
-        fetchData();
-    }
+   const handleSearch=()=>{
+    dispatch(setKeyword(Query));
+    fetchData();
+   }
 
     useEffect(() => {
         fetchData();
@@ -36,12 +42,11 @@ function Home() {
 
     const fetchData = async () => {
         try {
-            const keyword =  'Bitcoin'; // Default to 'Bitcoin' if no keyword is provided
-    
+
             var options = {
                 method: 'GET',
                 url: 'https://api.newscatcherapi.com/v2/search',
-                params: {q: 'Bitcoin', lang: 'en', sort_by: 'relevancy', page: '1'},
+                params: {q: keyword, lang: 'en', sort_by: 'relevancy', page: '1'},
                 headers: {
                   'x-api-key':  process.env.REACT_APP_newApi
                 }
@@ -76,7 +81,7 @@ function Home() {
                                     value={Query}
                                     onChange={(event) => { SetQuery(event.target.value) }}
                                 />
-                                <IconButton sx={{ color: 'grey' }} onClick={handleSeach}>
+                                <IconButton sx={{ color: 'grey' }} onClick={handleSearch}>
                                     <SearchIcon />
                                 </IconButton>
                             </Box>
