@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import NewsCard from '../News/NewsCard';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { setKeyword } from '../../Redux/Keyword';
@@ -20,7 +21,7 @@ function Home() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [Query, SetQuery] = useState("");
     const [data, setData] = useState([]);
-    
+    const [loading, setLoading] = useState(true);
    const handleSearch=()=>{
     dispatch(setKeyword(Query));
     fetchData();
@@ -41,8 +42,11 @@ function Home() {
     }, []);
 
     const fetchData = async () => {
+        setLoading(true); // Set loading to true at the start of fetching
+    
         try {
-
+            if (!keyword) return; // Exit early if no keyword is provided
+    
             var options = {
                 method: 'GET',
                 url: 'https://api.newscatcherapi.com/v2/search',
@@ -51,22 +55,22 @@ function Home() {
                   'x-api-key':  process.env.REACT_APP_newApi
                 }
               };
-              axios.request(options).then(function (response) {
-                
-                setData(response.data.articles)
-            }).catch(function (error) {
-                console.error(error);
-            });
-           
+    
+            const response = await axios.request(options);
+    
+            setData(response.data.articles);
         } catch (error) {
             console.error("Error fetching data:", error);
             console.error("Response:", error.response); // Log detailed response
+        } finally {
+            setLoading(false); // Ensure loading is set to false even in case of error
         }
     };
     
-
     return (
         <>
+          
+        
             <Grid container>
                 <Grid item xs={windowWidth > 1000 ? 2 : 1}>
                     {windowWidth > 1000 ? <LeftNav /> : <MobileLeftNav />}
@@ -85,14 +89,17 @@ function Home() {
                                     <SearchIcon />
                                 </IconButton>
                             </Box>
-                        </Container>
-                        {data &&
+                        </Container> 
+                        {loading===true ?  <CircularProgress style={{position:'absolute',top:'50%',left:'50%'}}/> : 
+                        data &&
                             data
                                 .filter(article => article.title !== "[Removed]" && article.excerpt !== "-" && article.media !== null)
                                 .map(article => (
                                     <NewsCard key={article.title} news={article} />
                                 ))
-                        }
+                        
+                    }
+
                     </Box>
                 </Grid>
                 <Grid item xs={1}>
@@ -104,6 +111,7 @@ function Home() {
                     </IconButton>
                 </div>
             </Grid>
+       
         </>
     );
 }
