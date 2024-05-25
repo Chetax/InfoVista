@@ -1,6 +1,5 @@
-# InfoVista
-![InfoVista Logo](AppLogo.png)
-
+#  [InfoVista](https://info-vista-frontend.vercel.app/)
+<a href="https://info-vista-frontend.vercel.app/" target="_blank"><img src="https://github.com/Chetax/InfoVista/assets/99749401/d34810a9-f905-4a2d-a3a3-f8434a425bf0" ></a>
 
 InfoVista is a new web application designed to provide users with comprehensive access to information, news, and insights from around the world. With InfoVista, users can stay informed, explore diverse perspectives, and discover trending topics with ease.
 
