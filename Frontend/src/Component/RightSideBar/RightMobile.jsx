@@ -17,8 +17,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { useSelector, useDispatch } from 'react-redux'
+import { setKeyword } from '../../Redux/Keyword';
+import { ShepherdTour, ShepherdTourContext } from "react-shepherd";
 
-export default function AnchorTemporaryDrawer() {
+export default function AnchorTemporaryDrawer({keywords,query}) {
+  let keyword = useSelector(state => state.keyword.keyword);
+  const dispatch = useDispatch()
   const [state, setState] = React.useState({
     right: false,
   });
@@ -54,7 +59,12 @@ export default function AnchorTemporaryDrawer() {
       <ListItemText sx={{display:'flex',alignItems:'center',justifyContent:'center',mb:2}} primary=" Categroy" />
         {[['Business',<AddBusinessIcon/>], ['Entertainment',<MovieFilterIcon/>], ['General',<SpaIcon/>], ['Health',<HealthAndSafetyIcon/>],['Science',<ScienceIcon/>],["Sports",<SportsCricketIcon/>],["Technology",<DevicesIcon/>]].map((text, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={()=>{
+              setKeyword(text[0]);
+              keywords=text[0];
+              query(text[0]);
+              console.log(keywords);
+            }}>
               <ListItemIcon>
               {text[1]}
               </ListItemIcon>

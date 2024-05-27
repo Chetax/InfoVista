@@ -43,10 +43,9 @@ function Home() {
     }, []);
 
     const fetchData = async () => {
-        setLoading(true); // Set loading to true at the start of fetching
+        setLoading(true);
         try {
-            if (!keyword) return; // Exit early if no keyword is provided
-    
+            if (!keyword) return; 
             var options = {
                 method: 'GET',
                 url: 'https://api.newscatcherapi.com/v2/search',
@@ -103,7 +102,7 @@ function Home() {
                     </Box>
                 </Grid>
                 <Grid item xs={1}>
-                    {windowWidth > 1000 ? <RightSideBar /> : <RightMobile />}
+                    {windowWidth > 1000 ? <RightSideBar keywords={keyword} query={SetQuery} /> : <RightMobile />}
                 </Grid>
                 <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
                     <IconButton color="primary" aria-label="add">
