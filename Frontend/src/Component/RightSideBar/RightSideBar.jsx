@@ -17,10 +17,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Button } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux'
+import { setKeyword } from '../../Redux/Keyword';
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerRight({ onKeywordChange }) {
+export default function PermanentDrawerRight({keywords,SetQueryFunc}) {
   const categories = [
     ['Business', <AddBusinessIcon />],
     ['Entertainment', <MovieFilterIcon />],
@@ -30,6 +32,7 @@ export default function PermanentDrawerRight({ onKeywordChange }) {
     ['Sports', <SportsCricketIcon />],
     ['Technology', <DevicesIcon />]
   ];
+  const dispatch = useDispatch()
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -53,7 +56,10 @@ export default function PermanentDrawerRight({ onKeywordChange }) {
           </Typography>
           {categories.map((category, index) => (
             <ListItem key={category[0]} disablePadding>
-              <ListItemButton onClick={() => onKeywordChange(category[0])}>
+              <ListItemButton onClick={()=>{
+                   dispatch(setKeyword(category[0]));
+                   SetQueryFunc(category[0]);
+              }}>
                 {category[1]}
                 <ListItemText sx={{ ml: 2 }} primary={category[0]} />
               </ListItemButton>

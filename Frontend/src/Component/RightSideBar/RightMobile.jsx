@@ -19,9 +19,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useSelector, useDispatch } from 'react-redux'
 import { setKeyword } from '../../Redux/Keyword';
-export default function AnchorTemporaryDrawer({keywords,query}) {
-  let keyword = useSelector(state => state.keyword.keyword);
+
+export default function AnchorTemporaryDrawer({keywords,SetQueryFunc}) {
   const dispatch = useDispatch()
+
   const [state, setState] = React.useState({
     right: false,
   });
@@ -59,10 +60,8 @@ export default function AnchorTemporaryDrawer({keywords,query}) {
         {[['Business',<AddBusinessIcon/>], ['Entertainment',<MovieFilterIcon/>], ['General',<SpaIcon/>], ['Health',<HealthAndSafetyIcon/>],['Science',<ScienceIcon/>],["Sports",<SportsCricketIcon/>],["Technology",<DevicesIcon/>]].map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton onClick={()=>{
-              setKeyword(text[0]);
-              keywords=text[0];
-              query(text[0]);
-              console.log(keywords);
+                 dispatch(setKeyword(text[0]));
+                 SetQueryFunc(text[0]);
             }}>
               <ListItemIcon>
               {text[1]}
