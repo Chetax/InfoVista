@@ -26,6 +26,7 @@ export default function AnchorTemporaryDrawer({keywords,query}) {
     right: false,
   });
 
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
