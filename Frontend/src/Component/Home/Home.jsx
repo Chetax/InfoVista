@@ -40,7 +40,7 @@ function Home() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [keyword,Query]);
+    }, []);
 
     const fetchData = async () => {
         setLoading(true);
