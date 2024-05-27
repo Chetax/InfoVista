@@ -19,8 +19,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useSelector, useDispatch } from 'react-redux'
 import { setKeyword } from '../../Redux/Keyword';
-import { ShepherdTour, ShepherdTourContext } from "react-shepherd";
-
 export default function AnchorTemporaryDrawer({keywords,query}) {
   let keyword = useSelector(state => state.keyword.keyword);
   const dispatch = useDispatch()
