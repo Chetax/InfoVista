@@ -1,7 +1,8 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 
 function NewsCard(newsobj) {
-    const publishedAtString = "2024-04-11T16:00:00Z";
+     console.log(newsobj)
+    const publishedAtString = newsobj.news.published_date;
     const publishedAtDate = new Date(publishedAtString);
     const year = publishedAtDate.getFullYear();
     const month = publishedAtDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month (0-11)

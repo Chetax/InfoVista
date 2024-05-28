@@ -56,8 +56,9 @@ function Home() {
               };
     
             const response = await axios.request(options);
-    
+            console.log(response)
             setData(response.data.articles);
+          
         } catch (error) {
             console.error("Error fetching data:", error);
             console.error("Response:", error.response); // Log detailed response
